@@ -58,7 +58,7 @@
 
 
   <!-- Hokuyo Laser scanner -->
-  <property name="hokuyo_size" value="0.05" />
+  <property name="hokuyo_size" value="0.07" />
 
   <!-- Macro for calculating inertia of cylinder -->
   <macro name="cylinder_inertia" params="m r h">
@@ -219,13 +219,13 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <cylinder length="${hokuyo_size}" radius="${hokuyo_size/2}"/>
+          <cylinder length="${hokuyo_size/2}" radius="${hokuyo_size/2}"/>
         </geometry>
         <material name="Blue" />
       </visual>
     </link>
     <joint name="hokuyo_joint" type="fixed">
-      <origin xyz="${base_radius - hokuyo_size/2} 0 ${base_height+hokuyo_size/4}" rpy="0 0 0" />
+      <origin xyz="${base_radius - hokuyo_size} 0 ${base_height+hokuyo_size/8}" rpy="0 0 0" />
       <parent link="base_link"/>
       <child link="hokuyo_link" />
     </joint>

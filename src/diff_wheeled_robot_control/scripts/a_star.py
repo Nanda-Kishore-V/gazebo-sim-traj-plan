@@ -6,8 +6,8 @@ def heuristic(start,goal):
 
 def displayPathtoPrincess(n,grid):
 #print all the moves here
-    directions = [(-1,0),(0,-1),(0,1),(1,0)]
-    dir_in_words = ["UP","LEFT","RIGHT","DOWN"]
+    directions = [(-1,0),(0,-1),(0,1),(1,0),(1,1),(1,-1),(-1,1),(-1,-1)]
+    dir_in_words = ["UP","LEFT","RIGHT","DOWN","RIGHT-DOWN","LEFT-DOWN","RIGHT-UP","LEFT-UP"]
     path = [];              open_list = []
     size = n;               came_from = {}
     cost = {}
