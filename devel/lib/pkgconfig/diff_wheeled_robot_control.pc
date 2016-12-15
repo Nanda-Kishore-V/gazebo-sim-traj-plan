@@ -1,0 +1,8 @@
+prefix=/home/nanda/Documents/robotics_lab/robot_sim/devel
+
+Name: diff_wheeled_robot_control
+Description: Description of diff_wheeled_robot_control
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/nanda/Documents/robotics_lab/robot_sim/devel/lib 
+Requires: 

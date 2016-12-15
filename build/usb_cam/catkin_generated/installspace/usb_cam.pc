@@ -1,0 +1,8 @@
+prefix=/home/nanda/Documents/robotics_lab/robot_sim/install
+
+Name: usb_cam
+Description: Description of usb_cam
+Version: 0.3.4
+Cflags: -I/home/nanda/Documents/robotics_lab/robot_sim/install/include
+Libs: -L/home/nanda/Documents/robotics_lab/robot_sim/install/lib -lusb_cam
+Requires: 

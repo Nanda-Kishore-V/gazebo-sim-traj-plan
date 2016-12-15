@@ -1,0 +1,2 @@
+diff_wheeled_robot_control:diff_wheeled_robot_gazebo:robot_description:usb_cam
+-DCATKIN_DEVEL_PREFIX=/home/nanda/Documents/robotics_lab/robot_sim/devel -DCMAKE_INSTALL_PREFIX=/home/nanda/Documents/robotics_lab/robot_sim/install -G Unix Makefiles

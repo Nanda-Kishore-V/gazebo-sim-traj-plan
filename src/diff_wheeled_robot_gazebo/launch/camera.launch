@@ -1,0 +1,7 @@
+<launch>
+  <group ns="camera">
+    <param name="camera" command="$(find xacro)/xacro.py '$(find robot_description)/urdf/camera.xacro'"/>
+    <node name="spawn_camera" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+      args="-urdf -model axus_camera -param camera -x 0 -y 0 -z 0"/>
+  </group>
+</launch>

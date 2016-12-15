@@ -1,0 +1,8 @@
+prefix=/home/nanda/Documents/robotics_lab/robot_sim/devel
+
+Name: robot_description
+Description: Description of robot_description
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/nanda/Documents/robotics_lab/robot_sim/devel/lib 
+Requires: 

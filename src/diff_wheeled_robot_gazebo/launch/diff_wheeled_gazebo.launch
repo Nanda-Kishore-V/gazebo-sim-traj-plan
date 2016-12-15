@@ -1,0 +1,42 @@
+<launch>
+
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <!-- We resume the logic in empty_world.launch -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+
+  <param name="camera_description" command="$(find xacro)/xacro.py '$(find robot_description)/urdf/camera.xacro'"/>
+  <node name="spawn_camera" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="-urdf -model camera_model -param camera_description -x 0 -y 0 -z 2"/>
+  <!-- urdf xml robot description loaded on the Parameter Server-->
+
+  <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+  <group ns="first_robot">
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find robot_description)/urdf/diff_wheeled_robot.xacro' ns:=first_robot" />
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" ></node>
+    <!-- start robot state publisher -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" output="screen" >
+      <param name="publish_frequency" type="double" value="50.0" />
+    </node>
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  	args="-urdf -model diff_wheeled_robot -param robot_description -x 0 -y 0 -z 0"/>
+  </group>
+<!--
+  <group ns="second_robot">
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+  	args="-urdf -model diff_wheeled_robot_2 -param robot_description -x 2 -y 2 -z 0"/>
+  </group> -->
+
+</launch>
